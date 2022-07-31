@@ -1,29 +1,30 @@
 @extends('layouts/main')
-@section('title', 'Tambah Kategori')
+@section('title', 'Ubah Kategori')
 @section('container')
 <div class="container mt-5">
     <div class="card">
         <div class="card-header">
-            <h3>Form Tambah Kategori</h3>
+            <h3>Ubah Kategori</h3>
         </div>
         <div class="card-body">
             <div class="col-lg-12">
-                <form action="/category" method="POST">
+                <form action="/category/{{$category->id}}" method="post">
+                    @method('patch')
                     @csrf
                     <div class="mb-3 col-lg-6">
                         <label for="class" class="form-label">Kelas</label>
                         <select class="form-select" id="select" aria-label="Default select example" name="class">
                             <option selected>Open this select menu</option>
-                            <option value="10">X</option>
-                            <option value="11">XI</option>
-                            <option value="12">XII</option>
+                            <option value="X" {{$category->class == 'X' ?'selected' : ''}}>X</option>
+                            <option value="XI" {{$category->class == 'XI' ?'selected' : ''}}>XI</option>
+                            <option value="XII" {{$category->class == 'XII' ?'selected' : ''}}>XII</option>
                         </select>
                     </div>
                     <div class="mb-3 col-lg-6">
                         <label for="major" class="form-label">Jurusan</label>
-                        <input type="text" class="form-control" name="major" id="major" autocomplete="off">
+                        <input type="text" class="form-control" name="major" id="major" value="{{$category->major}}" autocomplete="off">
                     </div>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-outline-primary"><i class="fa fa-save"></i> Simpan</button>
                 </form>
             </div>
         </div>

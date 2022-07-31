@@ -62,7 +62,6 @@ class CategoryController extends Controller
                     'error' => true,
                     'errors' => $e,
                 ],
-                500
             );
         }
     }
@@ -75,11 +74,11 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::findOrFail($id);
+        // $category = Category::findOrFail($id);
 
-        return view('category.show', [
-            'category' => $category,
-        ]);
+        // return view('category.show', [
+        //     'category' => $category,
+        // ]);
     }
 
     /**
@@ -106,7 +105,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $category = Category::find($id);
+            $category->class = $request->class;
+            $category->major = $request->major;
+            $category->save();
+            return redirect('/category')->with('status', 'Berhasil di ubah');
+        } catch (Exception $e) {
+            return response()->json(
+                [
+                    'message' => 'Internal error',
+                    'code' => 500,
+                    'error' => true,
+                    'errors' => $e,
+                ],
+            );
+        }
     }
 
     /**
@@ -117,6 +131,21 @@ class CategoryController extends Controller
      */
     public function destroy(Request $id)
     {
-        //
+        try {
+            Category::destroy($id->id);
+            return redirect('/category')->with(
+                'status',
+                'Data berhasil di tambahkan'
+            );
+        } catch (Exception $e) {
+            return response()->json(
+                [
+                    'message' => 'Internal error',
+                    'code' => 500,
+                    'error' => true,
+                    'errors' => $e,
+                ],
+            );
+        }
     }
 }

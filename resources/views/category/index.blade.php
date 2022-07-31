@@ -4,6 +4,9 @@
 <div class="container mt-3">
     <a href="/category/create" class="btn btn-outline-success mb-2"><i class="fa fa-plus"></i> Tambah</a>
     <div class="card mt-3">
+        <div class="card-header">
+            <h3>Daftar Kategori</h3>
+        </div>
         <div class="card-body">
             <table class="table mt-3" id="category-table">
                 <thead>
@@ -21,8 +24,14 @@
                         <td>{{$categories->major}}</td>
                         <td>{{$categories->class}}</td>
                         <td>
-                            <a href="/category/edit/{{$categories->id}}">Edit</a>
-                            <a href="">Delete</a>
+                            <a href="/category/edit/{{$categories->id}}" class="btn btn-outline-primary btn-sm">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <form action="/category/{{$categories->id}}" method="post" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus?')"><i class="fa fa-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

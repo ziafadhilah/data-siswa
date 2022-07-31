@@ -8,22 +8,24 @@
         </div>
         <div class="card-body">
             <div class="col-lg-12">
-                <form action="/category" method="POST">
+                <form action="/category" method="post">
                     @csrf
                     <div class="mb-3 col-lg-6">
                         <label for="class" class="form-label">Kelas</label>
-                        <select class="form-select" id="select" aria-label="Default select example" name="class">
+                        <select class="form-select" id="select" name="class">
                             <option selected>Open this select menu</option>
-                            <option value="10">X</option>
-                            <option value="11">XI</option>
-                            <option value="12">XII</option>
+                            <option value="X">X</option>
+                            <option value="XI">XI</option>
+                            <option value="XII">XII</option>
                         </select>
                     </div>
                     <div class="mb-3 col-lg-6">
                         <label for="major" class="form-label">Jurusan</label>
                         <input type="text" class="form-control" name="major" id="major" autocomplete="off">
                     </div>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-outline-primary">
+                        <i class="fa fa-save"></i>&nbsp;Simpan
+                    </button>
                 </form>
             </div>
         </div>
