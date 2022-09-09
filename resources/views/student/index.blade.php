@@ -2,7 +2,10 @@
 @section('title', 'Daftar Siswa')
 @section('container')
 <div class="container mt-3">
-    <a href="/student/create" class="btn btn-outline-success mb-2"><i class="fa fa-plus"></i> Tambah</a>
+    <div class="d-inline">
+        <a href="{{url('student/create')}}" class="btn btn-outline-primary mb-2"><i class="fa fa-plus"></i> Tambah</a>
+        <a href="{{url('student/export')}}" class="btn btn-outline-success mb-2"><i class="fa fa-file-excel"></i> Export Excel</a>
+    </div>
     <div class="card mt-3">
         <div class="card-header">
             <h3>Daftar Siswa</h3>

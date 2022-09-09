@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\StudentExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Category;
 use App\Models\Student;
 use Exception;
@@ -187,5 +189,10 @@ class StudentController extends Controller
                 ],
             );
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new StudentExport, 'Data-Siswa.xlsx');
     }
 }

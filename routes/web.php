@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//login
+Route::get('/', function () {
+    return view('welcome');
+});
+
 //category
 Route::prefix('/category')->group(function () {
     Route::get('/', [CategoryController::class, 'index']);
@@ -35,4 +40,5 @@ Route::prefix('/student')->group(function () {
     Route::post('/', [StudentController::class, 'store']);
     Route::patch('/{id}', [StudentController::class, 'update']);
     Route::delete('/{id}', [StudentController::class, 'destroy']);
+    Route::get('/export', [StudentController::class, 'export']);
 });
